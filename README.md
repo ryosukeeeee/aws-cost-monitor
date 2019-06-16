@@ -29,3 +29,7 @@ $ sls invoke -f hello
 - - -
 ## 参考
 [AWS Lambda上でnode-canvasを使ってグラフを描画する](https://tech.studyplus.co.jp/entry/2019/02/25/095548)
+
+[Class AWS.CostExplorer - AWS SDK for javascript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CostExplorer.html#getCostAndUsage-property)
+
+[Serverless - AWS Documentation](https://serverless.com/framework/docs/providers/aws/)
