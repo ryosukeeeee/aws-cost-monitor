@@ -21,7 +21,7 @@ service: sls-cost-explorer # NOTE: update this with your service name
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs8.10
 
 # you can overwrite defaults here
   stage: dev
@@ -46,6 +46,10 @@ provider:
       Action:
         - "ce:GetCostAndUsage"
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource: "arn:aws:s3:::*"
 
 # you can define service wide environment variables here
 #  environment:
