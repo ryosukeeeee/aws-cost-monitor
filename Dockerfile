@@ -1,10 +1,10 @@
 FROM amazonlinux:latest
 
-RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
-RUN yum install -y nodejs zip
-RUN npm install -g yarn
-
-RUN mkdir /test
+RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - && \
+    yum install -y nodejs zip && \
+    npm install -g yarn && \
+    mkdir /test
+    
 COPY ./package.json /test/
 COPY ./yarn.lock /test/
 
