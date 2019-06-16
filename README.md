@@ -23,7 +23,7 @@ $ sls deploy
 
 試しに実行する
 ```
-$ sls invoke -f hello
+$ sls invoke -f main
 ```
 
 - - -
