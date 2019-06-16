@@ -21,7 +21,7 @@ const { CanvasRenderService } = require('chartjs-node-canvas');
 //   ],
 // };
 
-module.exports.hello = async (event) => {
+module.exports.main = async (event) => {
   const date = new Date();
   const unixtime = date.getTime();
   try {

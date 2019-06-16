@@ -28,9 +28,14 @@ provider:
       Resource: "*"
     - Effect: "Allow"
       Action:
-        - "s3:*"
-      Resource: "arn:aws:s3:::*"
+        - "s3:PutObject"
+        - "s3:PutObjectAcl"
+        - "s3:GetBucketLocation"
+      Resource: "arn:aws:s3:::sls-cost-graph/*"
 
 functions:
-  hello:
-    handler: handler.hello
+  main:
+    handler: handler.main
+    # The following config will attach a schedule event
+    # events:
+    #   - schedule: cron(0 12 * * ? *)
