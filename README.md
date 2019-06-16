@@ -24,6 +24,7 @@ $ sls deploy
 試しに実行する
 ```
 $ sls invoke -f main
+$ "https://bucketname.s3.region.amazonaws.com/filename.png"
 ```
 
 - - -
