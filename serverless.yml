@@ -3,9 +3,10 @@ service: sls-cost-explorer
 provider:
   name: aws
   runtime: nodejs8.10
-
   stage: dev
   region: ap-northeast-1
+  environment:
+    BUCKET: ${file(./config.json):bucket}
 
 # you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
@@ -31,7 +32,12 @@ provider:
         - "s3:PutObject"
         - "s3:PutObjectAcl"
         - "s3:GetBucketLocation"
-      Resource: "arn:aws:s3:::sls-cost-graph/*"
+      Resource: 
+        Fn::Join : 
+          - ""
+          - - "arn:aws:s3:::"
+            - ${file(./config.json):bucket}
+            - "/*"
 
 functions:
   main:

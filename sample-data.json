@@ -1,0 +1,71 @@
+{
+  "type" : "bar",
+  "data": { 
+    "labels": [ "the day before yesterday","昨日"],
+    "datasets": [
+      {
+        "label" : "AWS S3",
+        "borderWidth" : 1,
+        "backgroundColor" : "#121554",
+        "borderColor" : "#121554",
+        "data" : [3000, 2800]
+      },
+      {
+        "label": "AWS lambda",
+        "borderWidth" : 1,
+        "backgroundColor" : "#1d3681",
+        "borderColor" : "#1d3681",
+        "data" : [1500, 1400]
+      },
+      {
+        "label" : "AWS RedShift",
+        "borderWidth" : 1,
+        "backgroundColor" : "#2e70a7",
+        "borderColor" : "#2e70a7",
+        "data" : [1000, 1000]
+      },
+      {
+        "label" : "AWS EC2",
+        "borderWidth" : 1,
+        "backgroundColor" : "#4eadc7",
+        "borderColor" : "#4eadc7",
+        "data" : [1000, 1000]
+      },
+      {
+        "label" : "AWS KMS",
+        "borderWidth" : 1,
+        "backgroundColor" : "#d1268b",
+        "borderColor" : "#a7d8bf",
+        "data" : [3000, 3000]
+      }
+    ]
+  },
+  "options": {
+    "title": {
+      "display" : true,
+      "text": "Cost and Usage", 
+      "padding" :3
+    },
+    "scales": {
+      "xAxes": [{
+        "stacked": true, 
+        "categoryPercentage": 0.4
+      }],
+      "yAxes": [{
+        "stacked": true,
+        "scaleLabel": {  
+          "display": true, 
+          "labelString": "Cost", 
+          "fontSize": 18      
+        }
+      }]
+    },
+    "legend": {
+      "display": true,
+      "labels": {
+        "boxWidth":30,
+        "padding":20 
+      }
+    }
+  }
+}

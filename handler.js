@@ -4,11 +4,8 @@ AWS.config.update({
   region: 'us-east-1'
 })
 const s3 = new AWS.S3();
-const path = require("path");
-
 const costexplorer = new AWS.CostExplorer();
-
-const { CanvasRenderService } = require('chartjs-node-canvas');
+const graph = require('./graph');
 
 // CostExplorerに渡すパラメータ
 // const params = {
@@ -27,49 +24,9 @@ module.exports.main = async (event) => {
   const date = new Date();
   const unixtime = date.getTime();
   try {
-    const renderService = new CanvasRenderService(600,600);
-    // グラフにしたいデータとオプション
-    const options = {
-      type: 'bar',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    };
-    // console.log(path.join(__dirname, 'IPAexfont00401/ipaexg.ttf'));
-    // renderService.registerFont(path.join(__dirname, 'ipaexg.ttf'), {family: 'ipaex'});
-    const buffer = await renderService.renderToBuffer(options);
+    const buffer = await graph.sampleGraphPlot()
     const s3params = {
-      Bucket: 'sls-cost-graph',
+      Bucket: process.env['BUCKET'],
       Key: `${unixtime}.png`,
       Body: buffer,
       ContentType: 'image/png',
