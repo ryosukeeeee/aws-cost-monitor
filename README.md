@@ -31,6 +31,10 @@ $ sls invoke -f main
 "https://bucketname.s3.region.amazonaws.com/filename.png"
 ```
 
+## サンプルデータから生成されるグラフ
+![](https://raw.githubusercontent.com/ryosukeeeee/aws-cost-monitor/images/1560781851220.png)
+
+
 - - -
 ## 参考
 [AWS Lambda上でnode-canvasを使ってグラフを描画する](https://tech.studyplus.co.jp/entry/2019/02/25/095548)
