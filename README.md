@@ -1,17 +1,16 @@
 # aws-cost-monitor
 
+## 実現したいこと
+1. 毎日n時にlambdaが実行される
+1. Cost Explorerでコスト・利用データを取得
+1. chartsでグラフ化
+1. s3にアップロード
+1. slackにグラフのurlを投稿
 
-[node-canvas](https://github.com/Automattic/node-canvas)でcharts.jsで生成したグラフをレンダリングする
-
-公式のREADMEによると
-> node-canvas is a Cairo-backed Canvas implementation for Node.js.
-
-とのことだが，lambda上で実行するためには
-[Cairoをamazon-linux用にビルド](https://github.com/Automattic/node-canvas/issues/1231)する必要がある
+## デプロイ手順
 ```
 $ yarn run build
 ```
-
 
 serverless frameworkでデプロイ
 ```
@@ -19,9 +18,14 @@ $ sls deploy
 ```
 
 
-- - -
+## yarn run buildする理由
+[node-canvas](https://github.com/Automattic/node-canvas)でcharts.jsで生成したグラフをレンダリングする
 
-試しに実行する
+lambda上で実行するためには、node-canvasが内部で使用している
+[Cairoをamazon-linux用にビルド](https://github.com/Automattic/node-canvas/issues/1231)する必要がある
+
+
+## ターミナルからテスト
 ```
 $ sls invoke -f main
 "https://bucketname.s3.region.amazonaws.com/filename.png"
