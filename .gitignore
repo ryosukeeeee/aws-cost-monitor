@@ -6,3 +6,4 @@ jspm_packages
 .serverless
 .python-version
 IPAexfont00401/*
+*.ttf
