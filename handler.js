@@ -10,7 +10,9 @@ const costexplorer = new AWS.CostExplorer();
 
 const { CanvasRenderService } = require('chartjs-node-canvas');
 
+// CostExplorerに渡すパラメータ
 // const params = {
+//  期間は6/10 ~ 6/12
 //   TimePeriod: { 
 //     End: '2019-06-12', 
 //     Start: '2019-06-10' 
@@ -26,6 +28,7 @@ module.exports.main = async (event) => {
   const unixtime = date.getTime();
   try {
     const renderService = new CanvasRenderService(600,600);
+    // グラフにしたいデータとオプション
     const options = {
       type: 'bar',
       data: {
@@ -76,6 +79,7 @@ module.exports.main = async (event) => {
     console.log(s3_result);
     return s3_result.Location;
 
+    // コストは下の関数を実行すれば取得できる
     // const data = costexplorer.getCostAndUsage(params).promise();
     // return data;
   }
