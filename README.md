@@ -35,6 +35,15 @@ $ sls invoke -f main
 ![](https://raw.githubusercontent.com/ryosukeeeee/aws-cost-monitor/images/1560781851220.png)
 
 
+## 日本語フォント
+lambda実行環境には日本語フォントが含まれないのでフォントデータを用意する必要があります．
+
+日本語フォントは
+[Rounded Mgen+ (ラウンデッド ムゲンプラス) | 自家製フォント工房](http://jikasei.me/font/rounded-mgenplus/)
+さんのフォントを使用しています．
+
+フォントを変更する場合は，フォントデータを`/fonts`以下に保存し，`config.json`の`font-name`,`font-family`を書き換えてください
+
 - - -
 ## 参考
 [AWS Lambda上でnode-canvasを使ってグラフを描画する](https://tech.studyplus.co.jp/entry/2019/02/25/095548)

@@ -1,7 +1,7 @@
 {
   "type" : "bar",
   "data": { 
-    "labels": ["the day before yesterday", "yesterday"],
+    "labels": ["2日前", "昨日"],
     "datasets": [
       {
         "label" : "AWS S3",
