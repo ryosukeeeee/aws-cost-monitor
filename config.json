@@ -1,3 +1,5 @@
 {
-  "bucket":"sls-cost-graph"
+  "bucket": "sls-cost-graph",
+  "font-name": "rounded-mgenplus-1cp-light.ttf",
+  "font-family": "Rounded Mgen+ 1cp"
 }
