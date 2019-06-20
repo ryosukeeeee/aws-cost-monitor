@@ -9,6 +9,8 @@ provider:
     BUCKET: ${file(./config.json):bucket}
     FONT_NAME: ${file(./config.json):font-name}
     FONT_FAMILY: ${file(./config.json):font-family}
+    SLACK_TOKEN: ${file(./.env.json):slack-token}
+    SLACK_CHANNEL_ID: ${file(./.env.json):slack-channel}
 
 # you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
