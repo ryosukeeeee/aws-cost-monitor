@@ -4,8 +4,8 @@ AWS.config.update({
   region: 'us-east-1'
 })
 const costexplorer = new AWS.CostExplorer();
-const graph = require('./graph');
-const postGraph = require('./postGraph');
+const graph = require('./module/graph');
+const postGraph = require('./module/postGraph');
 const fs = require('fs');
 
 // CostExplorerに渡すパラメータ
