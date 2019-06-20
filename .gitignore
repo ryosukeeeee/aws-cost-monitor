@@ -4,7 +4,8 @@ jspm_packages
 
 # Serverless directories
 .serverless
+
 .python-version
-IPAexfont00401/*
 # *.ttf
-# rounded-mgenplus-1cp-light.ttf
+
+.env.json

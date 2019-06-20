@@ -7,7 +7,9 @@
     "aws-sdk": "^2.476.0",
     "canvas": "^2.3.1",
     "chart.js": "^2.8.0",
-    "chartjs-node-canvas": "^2.4.0"
+    "chartjs-node-canvas": "^2.4.0",
+    "fs": "0.0.1-security",
+    "request": "^2.88.0"
   },
   "scripts": {
     "prebuild": "docker build -t lambda-build .",
