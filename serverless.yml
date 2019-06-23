@@ -48,4 +48,5 @@ functions:
     handler: handler.main
     # The following config will attach a schedule event
     # events:
-    #   - schedule: cron(0 12 * * ? *)
+      # min hour day_of_month month day_of_week year
+      # - schedule: cron(0 8 * * ? *)
