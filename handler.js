@@ -32,6 +32,7 @@ module.exports.main = async (event) => {
     console.log(params);
     // コストは下の関数を実行すれば取得できる
     const data = await costexplorer.getCostAndUsage(params).promise();
+    await postGraph.promisePostSnippet(JSON.stringify(data));
 
     // ダミーデータを渡す
     // const data = require('./ce.json');
