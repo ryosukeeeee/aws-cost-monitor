@@ -26,3 +26,21 @@ const promiseRequest = module.exports.promiseRequest =  (readStreamObj) => {
   })
 }
 
+const promisePostSnippet = module.exports.promisePostSnippet = (text) => {
+  formData.title = 'response.json';
+  formData.content = text;
+
+  return new Promise((resolve, reject) => {
+    request.post({
+      url: slackFileUploadUrl,
+      formData: formData
+    },
+    (error, response, body) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(response, body);
+      }
+    })
+  })
+}
