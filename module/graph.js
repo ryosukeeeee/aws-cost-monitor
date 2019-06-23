@@ -10,6 +10,19 @@ const fontFamily = process.env['FONT_FAMILY'];
 // デフォルトだと日本語が文字化けするので日本語フォントを登録する
 Canvas.registerFont(path.join(__dirname, `../fonts/${fontName}`), { family: fontFamily });
 
+// 背景を白で塗りつぶす
+// https://memorva.jp/memo/html/chartjs_to_image.php
+const chartCallback = (ChartJS) => {
+  // Global plugin example: https://www.chartjs.org/docs/latest/developers/plugins.html
+  ChartJS.plugins.register({
+    beforeDraw: function(ch){
+      var ctx = ch.chart.ctx;
+      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+      ctx.fillRect(0, 0, ch.chart.width, ch.chart.height);
+    }
+  });
+};
+
 module.exports.sampleGraphPlot = (data) => {
   let graphData = reportParser.reportToDataForRender(data)
   let graphOption = {
