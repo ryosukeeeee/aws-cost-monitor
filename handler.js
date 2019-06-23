@@ -1,43 +1,47 @@
 'use strict';
-const AWS = require('aws-sdk');
-AWS.config.update({
-  region: 'us-east-1'
-})
-const costexplorer = new AWS.CostExplorer();
+
 const graph = require('./module/graph');
 const postGraph = require('./module/postGraph');
 const fs = require('fs');
 
-// CostExplorerに渡すパラメータ
-const params = {
-  // 期間は6/10 ~ 6/12
-  TimePeriod: { 
-    End: '2019-06-17', 
-    Start: '2019-06-10' 
-  },
-  Granularity: 'DAILY',
-  Metrics: [
-    'UnblendedCost',
-  ],
-  GroupBy: [{
-    Type: 'DIMENSION',
-    Key: 'SERVICE',
-  }]
-};
+const AWS = require('aws-sdk');
+AWS.config.update({
+  region: 'us-east-1'
+})
+
+const costexplorer = new AWS.CostExplorer();
 
 module.exports.main = async (event) => {
-  // const date = new Date();
-  // const unixtime = date.getTime();
   try {
-    // コストは下の関数を実行すれば取得できる
-    // const data = await costexplorer.getCostAndUsage(params).promise();
+    // CostExplorerに渡すパラメータ
+    const params = {
+      TimePeriod: { 
+        End: getFormattedDateBeforeParam(1), 
+        Start: getFormattedDateBeforeParam(7) 
+      },
+      Granularity: 'DAILY',
+      Metrics: [
+        'UnblendedCost',
+      ],
+      GroupBy: [{
+        Type: 'DIMENSION',
+        Key: 'SERVICE',
+      }]
+    };
 
-    const buffer = await graph.sampleGraphPlot()
+    console.log(params);
+    // コストは下の関数を実行すれば取得できる
+    const data = await costexplorer.getCostAndUsage(params).promise();
+
+    // ダミーデータを渡す
+    // const data = require('./ce.json');
+
+    const buffer = await graph.sampleGraphPlot(data)
     fs.writeFileSync('/tmp/example.png', buffer);
     const readStreamObj = fs.createReadStream('/tmp/example.png');
-    const {response, body} = await postGraph.promiseRequest(readStreamObj);
+    const { body, } = await postGraph.promiseRequest(readStreamObj);
 
-    return body;
+    return data;
   }
   catch(error) {
     console.log("Error occured: ", error);
