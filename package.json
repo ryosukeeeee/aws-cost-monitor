@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "dependencies": {
-    "aws-sdk": "^2.476.0",
+    "aws-sdk": "^2.814.0",
     "canvas": "^2.3.1",
     "chart.js": "^2.8.0",
     "chartjs-node-canvas": "^2.4.0",
